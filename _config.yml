@@ -1,7 +1,7 @@
 title: "GeomechMotion – PLAXIS"
 description: "Animaciones y videos sobre PLAXIS (procedimientos, K0, modelos constitutivos)."
 
-# MUY IMPORTANTE para repos de proyecto (URLs correctas)
+# MUY IMPORTANTE para repos de proyecto
 url: "https://geomechmotion.github.io"
 baseurl: "/plaxis-animations"
 
