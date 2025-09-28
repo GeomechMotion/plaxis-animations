@@ -3,12 +3,13 @@
 .card { border:1px solid #e5e7eb; border-radius:14px; padding:12px; background:#fff; }
 @media (prefers-color-scheme: dark){ .card { background:#151a20; border-color:#232a32; } }
 .card h3 { margin:10px 0 6px; font-size:1.05rem; }
-.card p.meta { font-size:.85rem; opacity:.8; margin:4px 0 0; }
+.card p.meta { font-size:.9rem; opacity:.85; margin:4px 0 0; }
 .card video, .card iframe { width:100%; border-radius:10px; aspect-ratio:16/9; }
 .badges { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
 .badge { font-size:.78rem; padding:3px 8px; border-radius:999px; border:1px solid #c7d2fe; background:#eef2ff; }
 @media (prefers-color-scheme: dark){ .badge { border-color:#334155; background:#1f2937; color:#e5e7eb; } }
 </style>
+
 <div class="grid" id="videoGrid">
 {% for v in site.data.videos %}
   <article class="card" data-tags="{{ v.tags | join: ',' | downcase }}">

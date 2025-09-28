@@ -1,11 +1,11 @@
 title: "GeomechMotion – PLAXIS"
 description: "Animaciones y videos sobre PLAXIS (procedimientos, K0, modelos constitutivos)."
 
-# IMPORTANTE para repos de proyecto
 url: "https://geomechmotion.github.io"
 baseurl: "/plaxis-animations"
 
 plugins:
   - jekyll-remote-theme
 
-remote_theme: poole/hyde
+# Hydeout es un fork que funciona muy bien con GitHub Pages
+remote_theme: fongandrew/hydeout
