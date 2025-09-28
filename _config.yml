@@ -1,10 +1,11 @@
-title: "GeomechMotion - PLAXIS"
+title: "GeomechMotion – PLAXIS"
 description: "Animaciones y videos sobre PLAXIS (procedimientos, K0, modelos constitutivos)."
-remote_theme: pages-themes/cayman@v0.2.0
+
+# MUY IMPORTANTE para repos de proyecto (URLs correctas)
+url: "https://geomechmotion.github.io"
+baseurl: "/plaxis-animations"
+
 plugins:
   - jekyll-remote-theme
-nav:
-  - text: Inicio
-    url: /plaxis-animations/
-  - text: Acerca de
-    url: /plaxis-animations/about.html
+
+remote_theme: poole/hyde
