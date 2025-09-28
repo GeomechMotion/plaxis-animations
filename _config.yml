@@ -8,5 +8,5 @@ baseurl: "/plaxis-animations"
 plugins:
   - jekyll-remote-theme
 
-# Tema Hyde (remote theme)
+# Tema Hyde
 remote_theme: poole/hyde
