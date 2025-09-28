@@ -1,32 +1,60 @@
 <style>
-.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
-.card { border:1px solid #e5e7eb; border-radius:12px; padding:12px; background:#fff; }
-.card h3 { margin:8px 0 6px; font-size:1.05rem; }
-.card p.meta { font-size:0.85rem; color:#6b7280; margin:4px 0 0; }
-.card video, .card iframe { width:100%; height:auto; border-radius:8px; }
-.poster { width:100%; display:block; border-radius:8px; margin-bottom:8px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; }
+.card { border:1px solid #e5e7eb; border-radius:14px; padding:12px; background:#fff; }
+@media (prefers-color-scheme: dark){
+  .card { background:#151a20; border-color:#232a32; }
+}
+.card h3 { margin:10px 0 6px; font-size:1.05rem; }
+.card p.meta { font-size:.85rem; opacity:.8; margin:4px 0 0; }
+.card video, .card iframe { width:100%; border-radius:10px; aspect-ratio:16/9; }
 .badges { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
-.badge { font-size:0.75rem; background:#eef2ff; border:1px solid #c7d2fe; padding:2px 8px; border-radius:999px; }
+.badge { font-size:.78rem; padding:3px 8px; border-radius:999px; border:1px solid #c7d2fe; background:#eef2ff; }
+@media (prefers-color-scheme: dark){
+  .badge { border-color:#334155; background:#1f2937; color:#e5e7eb; }
+}
 </style>
-<div class="grid">
+
+<div class="grid" id="videoGrid">
 {% for v in site.data.videos %}
-  <div class="card">
+  <article class="card" data-tags="{{ v.tags | join: ',' | downcase }}">
     {% if v.embed %}
-      <iframe src="{{ v.embed }}" title="{{ v.title | escape }}" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
+      <iframe src="{{ v.embed }}"
+              title="{{ v.title | escape }}"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
     {% else %}
-      <video controls preload="metadata" {% if v.poster %}poster="{{ v.poster }}"{% endif %}>
-        {% if v.mp4 %}<source src="{{ v.mp4 }}" type="video/mp4">{% endif %}
-        {% if v.webm %}<source src="{{ v.webm }}" type="video/webm">{% endif %}
-        Tu navegador no soporta el elemento <code>video</code>.
+      {% assign poster_url = v.poster %}
+      {% if poster_url and poster_url contains '://' %}
+        {% assign poster_final = poster_url %}
+      {% else %}
+        {% assign poster_final = poster_url | relative_url %}
+      {% endif %}
+      <video controls preload="metadata" {% if poster_final %}poster="{{ poster_final }}"{% endif %}>
+        {% if v.mp4 %}
+          {% if v.mp4 contains '://' %}
+            <source src="{{ v.mp4 }}" type="video/mp4">
+          {% else %}
+            <source src="{{ v.mp4 | relative_url }}" type="video/mp4">
+          {% endif %}
+        {% endif %}
+        {% if v.webm %}
+          {% if v.webm contains '://' %}
+            <source src="{{ v.webm }}" type="video/webm">
+          {% else %}
+            <source src="{{ v.webm | relative_url }}" type="video/webm">
+          {% endif %}
+        {% endif %}
+        Tu navegador no soporta <code>video</code>.
       </video>
     {% endif %}
     <h3>{{ v.title }}</h3>
-    {% if v.desc %}<p>{{ v.desc }}</p>{% endif %}
+    {% if v.desc %}<p class="meta">{{ v.desc }}</p>{% endif %}
     {% if v.tags %}
-      <div class="badges">{% for t in v.tags %}<span class="badge">{{ t }}</span>{% endfor %}</div>
+      <div class="badges">
+        {% for t in v.tags %}<span class="badge">{{ t }}</span>{% endfor %}
+      </div>
     {% endif %}
-  </div>
+  </article>
 {% endfor %}
 </div>

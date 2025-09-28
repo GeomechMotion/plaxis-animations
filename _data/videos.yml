@@ -1,6 +1,13 @@
-- title: "PLAXIS – Superficie Cam-Clay (intro)"
-  desc: "Evolución de superficie de fluencia y trayectorias de tensiones."
+- title: "Cam-Clay – intro"
+  desc: "Trayectorias de tensiones y superficie de fluencia."
   tags: ["PLAXIS","Cam-Clay","constitutivo"]
+  # Ejemplo usando MP4 externo CC0 (podés reemplazarlo por uno local en assets/videos/)
   mp4: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-  webm: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-  poster: "/assets/posters/poster.jpg"
+  poster: "/assets/posters/camclay_intro.jpg"
+
+- title: "K0 y construcción por etapas"
+  desc: "Efecto de distintos procedimientos de construcción inicial."
+  tags: ["PLAXIS","K0","staged"]
+  # Ejemplo con YouTube (reemplazá por el ID real)
+  embed: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  poster: "/assets/posters/k0.jpg"
