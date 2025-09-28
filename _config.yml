@@ -1,0 +1,10 @@
+title: "GeomechMotion - PLAXIS"
+description: "Animaciones y videos sobre PLAXIS (procedimientos, K0, modelos constitutivos)."
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
+nav:
+  - text: Inicio
+    url: /plaxis-animations/
+  - text: Acerca de
+    url: /plaxis-animations/about.html

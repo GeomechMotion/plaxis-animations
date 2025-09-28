@@ -1,0 +1,32 @@
+<style>
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+.card { border:1px solid #e5e7eb; border-radius:12px; padding:12px; background:#fff; }
+.card h3 { margin:8px 0 6px; font-size:1.05rem; }
+.card p.meta { font-size:0.85rem; color:#6b7280; margin:4px 0 0; }
+.card video, .card iframe { width:100%; height:auto; border-radius:8px; }
+.poster { width:100%; display:block; border-radius:8px; margin-bottom:8px; }
+.badges { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+.badge { font-size:0.75rem; background:#eef2ff; border:1px solid #c7d2fe; padding:2px 8px; border-radius:999px; }
+</style>
+<div class="grid">
+{% for v in site.data.videos %}
+  <div class="card">
+    {% if v.embed %}
+      <iframe src="{{ v.embed }}" title="{{ v.title | escape }}" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    {% else %}
+      <video controls preload="metadata" {% if v.poster %}poster="{{ v.poster }}"{% endif %}>
+        {% if v.mp4 %}<source src="{{ v.mp4 }}" type="video/mp4">{% endif %}
+        {% if v.webm %}<source src="{{ v.webm }}" type="video/webm">{% endif %}
+        Tu navegador no soporta el elemento <code>video</code>.
+      </video>
+    {% endif %}
+    <h3>{{ v.title }}</h3>
+    {% if v.desc %}<p>{{ v.desc }}</p>{% endif %}
+    {% if v.tags %}
+      <div class="badges">{% for t in v.tags %}<span class="badge">{{ t }}</span>{% endfor %}</div>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
